@@ -30,7 +30,7 @@ jobs:
       - name: Download UCI data
         run: python -m heart_ml.data_cli
         env:
-          PYTHONPATH: src
+          PYTHONPATH: ./src
       - name: Train and log experiments
         run: python -m heart_ml.train
         env:
