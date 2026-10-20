@@ -74,9 +74,8 @@ def train(data_path="data/raw/heart_disease.csv", artifact_dir="artifacts"):
     #mlflow.set_experiment("uci-heart-disease-classification")
 
     # Use SQLite for MLflow experiment tracking
-    project_root = Path(__file__).resolve().parents[2]
-    mlflow_db = project_root / "mlflow.db"
-
+    # Use a local SQLite database inside the project workspace or artifacts folder
+    mlflow_db = Path("artifacts") / "mlflow.db"
     mlflow.set_tracking_uri(f"sqlite:///{mlflow_db.as_posix()}")
     mlflow.set_experiment("uci-heart-disease-classification")
 
