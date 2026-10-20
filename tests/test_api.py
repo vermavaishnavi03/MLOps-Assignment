@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+import pandas as pd
 
 from heart_ml import api
 
