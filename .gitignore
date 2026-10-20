@@ -14,7 +14,5 @@ artifacts/*
 !artifacts/.gitkeep
 reports/figures/*
 !reports/figures/.gitkeep
-screenshots/*
-!screenshots/README.md
 .env
 .DS_Store
