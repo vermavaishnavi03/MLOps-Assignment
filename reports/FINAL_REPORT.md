@@ -2,7 +2,7 @@
 **Assignment:** 01  
 **Student:** Vaishnavi Verma / 2025AE05339 
 **Repository:** https://github.com/vermavaishnavi03/MLOps-Assignment
-**Video Link:**  
+**Video Link:**  https://github.com/vermavaishnavi03/MLOps-Assignment/tree/main/recording
 **Deployment URL or local access instructions:** No hosted deployment is there. For local access, start the API from the repository root with `uvicorn heart_ml.api:app --host 127.0.0.1 --port 8000` after installing dependencies and setting `PYTHONPATH=src`; open `http://127.0.0.1:8000/docs`. Check Appendix A which has details.
 
 ## 1. Abstract
