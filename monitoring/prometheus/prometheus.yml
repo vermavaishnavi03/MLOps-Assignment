@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: heart-api
+    metrics_path: /metrics
+    static_configs:
+      # For Docker Compose, run Prometheus in the same compose network and use heart-api:8000.
+      - targets: ["heart-api:8000"]

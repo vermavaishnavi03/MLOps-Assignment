@@ -1,0 +1,48 @@
+name: MLOps CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-lint-train:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Lint
+        run: ruff check src tests scripts
+      - name: Unit tests
+        run: pytest -q
+      - name: Download UCI data
+        run: python -m heart_ml.data_cli
+        env:
+          PYTHONPATH: src
+      - name: Train and log experiments
+        run: python -m heart_ml.train
+        env:
+          PYTHONPATH: src
+          MLFLOW_TRACKING_URI: file:./mlruns
+      - name: Upload model and MLflow artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlops-training-artifacts
+          path: |
+            artifacts/
+            mlruns/
+            reports/figures/
+          if-no-files-found: warn

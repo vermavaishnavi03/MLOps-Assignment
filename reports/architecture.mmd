@@ -1,0 +1,17 @@
+flowchart TD
+    A[UCI Heart Disease Dataset] --> B[Download and Validate]
+    B --> C[EDA and Data Quality Plots]
+    B --> D[Preprocessing Pipeline]
+    D --> E[Logistic Regression]
+    D --> F[Random Forest]
+    E --> G[Stratified Cross-Validation]
+    F --> G
+    G --> H[MLflow Parameters Metrics Artifacts]
+    H --> I[Select Best CV ROC-AUC]
+    I --> J[Serialized Pipeline]
+    J --> K[FastAPI /predict]
+    K --> L[Docker Image]
+    L --> M[Local Kubernetes or Cloud]
+    M --> N[Structured Logs and Prometheus Metrics]
+    O[GitHub Actions: Lint, Test, Train] --> B
+    O --> H
